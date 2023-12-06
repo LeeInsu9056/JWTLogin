@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Title</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+
+</head>
+<body>
+<div class="container">
+    <h2>Main Page</h2>
+    <button type="button" class="btn btn-primary" onclick="login();">Login</button>
+    <button type="button" class="btn btn-primary" onclick="join();">Join</button>
+    <button type="button" class="btn btn-primary" onclick="authorization();">Profile</button>
+</div>
+
+</body>
+<script>
+function login(){
+    location.href = "/login_page";
+}
+function join(){
+    location.href = "/join";
+}
+function authorization(){
+    location.href = "/myprofile";
+}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <title>Title</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+    </head>
+
+</head>
+<body>
+    <div id="profile">
+    </div>
+</body>
+<script>
+        $.ajax({
+            type: 'GET',
+            url: '/api/v1/user',
+            contentType:'application/json; charset=utf-8',
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Content-type","application/json");
+                xhr.setRequestHeader("Authorization", localStorage.getItem("Authorization"));
+            },
+        }).done(function(data,status,xhr) {
+            $("#profile").html("USER ID: " + data.user.username + "<br>token will expire in 10 seconds");
+        }).fail(function(xhr, status, error){
+            var jsonResponse = JSON.parse(xhr.responseText);
+            if(jsonResponse.status == "403" || jsonResponse.status == "500"){
+                alert("Please log in");
+                location.href = "/login_page";
+            }
+        });
+</script>
+</html>
